@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +14,6 @@
             background: linear-gradient(45deg, #4CAF50, #2196F3, #f44336, #ffeb3b);
             background-size: 400% 400%;
             animation: colorAnimation 15s ease infinite;
-            color: #333; /* Default text color */
         }
 
         @keyframes colorAnimation {
@@ -38,8 +36,8 @@
             padding: 10px;
             border: 1px solid #ccc;
             box-sizing: border-box;
-            border-radius: 8px; /* Rounded corners for textarea */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 8px; /* Added for consistency with other elements */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Added for consistency with other elements */
         }
 
         button {
@@ -49,7 +47,7 @@
             border: none;
             cursor: pointer;
             margin-bottom: 20px;
-            border-radius: 5px; /* Rounded corners for button */
+            border-radius: 5px; /* Added for consistency with other elements */
             font-size: 16px;
             transition: background-color 0.3s ease; /* Smooth transition for hover effect */
         }
@@ -58,34 +56,19 @@
             background-color: #45a049; /* Darker green on hover */
         }
 
+        /* Original Table Styles */
         table {
             width: 80%;
             border-collapse: collapse;
             margin-top: 20px;
-            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background for the table */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* More pronounced shadow */
-            border-radius: 10px; /* More rounded corners */
-            overflow: hidden; /* Ensures content respects border-radius */
         }
-
         th, td {
             border: 1px solid #ddd;
-            padding: 10px; /* Slightly more padding */
+            padding: 8px;
             text-align: right;
         }
-
         th {
-            background-color: #e0e0e0; /* Lighter grey for headers */
-            font-weight: bold;
-            color: #555;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9; /* Zebra striping for table rows */
-        }
-
-        tr:hover {
-            background-color: #e9e9e9; /* Highlight row on hover */
+            background-color: #f2f2f2;
         }
     </style>
 </head>
@@ -101,7 +84,7 @@
             const inputText = document.getElementById("inputText").value;
             const lines = inputText.split('\n').filter(line => line.trim() !== "");
             const tableContainer = document.getElementById("tableContainer");
-            tableContainer.innerHTML = ""; // Clear any previous table
+            tableContainer.innerHTML = ""; // مسح أي جدول سابق
 
             if (lines.length > 0) {
                 const table = document.createElement("table");
@@ -109,7 +92,7 @@
                 const tbody = document.createElement("tbody");
                 const headerRow = document.createElement("tr");
 
-                // Assume the first line contains comma-separated headers
+                // افتراض أن السطر الأول يحتوي على رؤوس الأعمدة مفصولة بفواصل (يمكن تعديل هذا)
                 const headers = lines.shift().split(',').map(header => header.trim()); // Get headers and remove from lines
                 headers.forEach(headerText => {
                     const th = document.createElement("th");
@@ -119,7 +102,7 @@
                 thead.appendChild(headerRow);
                 table.appendChild(thead);
 
-                // Add data rows to the table
+                // إضافة البيانات إلى الجدول
                 lines.forEach(line => {
                     const rowData = line.split(',').map(data => data.trim());
                     const tr = document.createElement("tr");
